@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Carro {
     String marca;
@@ -19,15 +20,17 @@ public class Carro {
     }
 
 public static void main(String[] args) {
-    Carro carro1 = new Carro("Honda", "Civic", 2016);
-    Carro carro2 = new Carro("Volkswagem", "Jetta", 2010);
 
-    //Executa ação pois é um metodo "void".
-    carro1.exibir();
-    carro2.exibir();
+    ArrayList<Carro> minhaGaragem = new ArrayList<>();
 
-    //Devolve valor pois ele retorna um "int".
-    System.out.println("Idade do Honda: " + carro1.idadeDoCarro() + " anos.");
-    System.out.println("Idade do Honda: " + carro2.idadeDoCarro() + " anos.");
+    minhaGaragem.add(new Carro("Honda", "Civic", 1990));
+    minhaGaragem.add(new Carro("Ford", "Maverick", 2000));
+    minhaGaragem.add(new Carro("Toyota", "Corolla", 2010));
+
+        System.out.println("----- EXIBINDO TODOS OS CARROS DA LISTA -----");
+
+        for(Carro carroDaVez : minhaGaragem){
+            carroDaVez.exibir();
+        }
     }
 }
