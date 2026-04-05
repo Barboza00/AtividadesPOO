@@ -8,30 +8,21 @@ public class Carro {
     public String getMarca() {
         return marca;
     }
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
     public String getModelo() {
         return modelo;
-    }
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
     }
     public int getAnoFabricacao() {
         return anoFabricacao;
     }
-    public void setanoFabricacao(int anoFabricacao) {
-        if (anoFabricacao < 1886 || anoFabricacao > 2026) {
-            System.out.println("Erro: ano de fabricação invalido");
-        } else  {
-            this.anoFabricacao = anoFabricacao;
-        }
-    }
 
+    //A vantagem de usar o construtor é que ele já deixa tudo pré-definido sem precisar gastar muito tempo.
     public Carro(String marca, String modelo, int anoFabricacao) {
+        if (marca == null || modelo == null || anoFabricacao < 1886 || anoFabricacao > 2026) {
+            System.out.println("Erro: Marca(e/ou) Ano invalido");
+        }
         this.marca = marca;
         this.modelo = modelo;
-        setanoFabricacao(anoFabricacao);
+        this.anoFabricacao =  anoFabricacao;
     }
 
     public void exibir(){
