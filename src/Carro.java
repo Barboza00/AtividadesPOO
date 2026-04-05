@@ -58,6 +58,6 @@ public static void main(String[] args) {
 }
 /* O que muda entre os dois construtores:
            O construtor com parâmetros obriga a passar os dados na hora de instanciar, garantindo um carro completo.
-           O construtor sem parâmetros (sobrecarga) dá a flexibilidade de criar o carro "vazio" com valores neutros,
+           O construtor sem parâmetros (sobrecarg) dá a flexibilidade de criar o carro "vazio" com valores neutros,
            podendo ser preenchido futuramente através dos métodos setters.
         */
