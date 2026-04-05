@@ -49,7 +49,16 @@ public class Carro {
 
 public static void main(String[] args) {
 
-        Carro.ANO_PRIMEIRO_CARRO = 1990;
+    /*
+    Escopo é a região do código onde uma variável é visível e pode ser acessada.
+    Em Java, uma variável só existe dentro do bloco de chaves { } onde foi criada.
+    No código do exercício, o x tinha escopo local ao if, por isso 'morria' assim que o if terminava.
+    Para funcionar, precisamos mover a declaração para o escopo do método main, que engloba tanto o if quanto o println.
+     */
+    int x = 10;
+    if (true) {
+    }
+    System.out.println(x);
 
     ArrayList<Carro> minhaGaragem = new ArrayList<>();
 
@@ -67,8 +76,3 @@ public static void main(String[] args) {
         }
     }
 }
-/*
-O erro acontece porque a palavra 'final' torna a variável imutável (uma constante).
-           Depois de definida, o Java impede qualquer alteração no seu valor,
-           garantindo segurança e integridade aos dados do sistema.
- */
