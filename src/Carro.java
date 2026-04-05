@@ -39,6 +39,14 @@ public class Carro {
         System.out.println("Carro: " + marca + " " + modelo + " - Ano: " + anoFabricacao);
     }
 
+    /*
+    Um método static não consegue acessar um atributo de instância porque o método estático existe independentemente de qualquer objeto.
+    Como os atributos de instância (como modelo) só existem 'dentro' de um objeto específico, o método estático não sabe para qual objeto olhar.
+     */
+    public static void imprimirTotal(){
+        System.out.println(totalCarros);
+    }
+
     public int idadeDoCarro(){
         return 2026 - anoFabricacao;
     }
