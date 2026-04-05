@@ -1,3 +1,4 @@
+/*
 import java.util.ArrayList;
 
 public class Carro {
@@ -49,17 +50,6 @@ public class Carro {
 
 public static void main(String[] args) {
 
-    /*
-    Escopo é a região do código onde uma variável é visível e pode ser acessada.
-    Em Java, uma variável só existe dentro do bloco de chaves { } onde foi criada.
-    No código do exercício, o x tinha escopo local ao if, por isso 'morria' assim que o if terminava.
-    Para funcionar, precisamos mover a declaração para o escopo do método main, que engloba tanto o if quanto o println.
-     */
-    int x = 10;
-    if (true) {
-    }
-    System.out.println(x);
-
     ArrayList<Carro> minhaGaragem = new ArrayList<>();
 
     minhaGaragem.add(new Carro("Honda", "Civic", 1990));
@@ -76,3 +66,19 @@ public static void main(String[] args) {
         }
     }
 }
+ */
+
+public class Carro {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = a;
+        b = 99;
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+    }
+}
+/*
+Alterar b não mudou a porque int é um tipo primitivo.
+Em tipos primitivos, o Java realiza uma atribuição por valor, criando uma cópia independente na memória.
+Portanto, qualquer alteração em b não afeta o valor original de a.
+ */
