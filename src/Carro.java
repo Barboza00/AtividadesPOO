@@ -4,6 +4,7 @@ public class Carro {
     private String marca;
     private String modelo;
     private int anoFabricacao;
+    static int totalCarros = 0;
 
     public String getMarca() {
         return marca;
@@ -14,13 +15,14 @@ public class Carro {
     public int getAnoFabricacao() {
         return anoFabricacao;
     }
-
-    //A vantagem de usar o construtor é que ele já deixa tudo pré-definido sem precisar gastar muito tempo.
+    
     public Carro(String marca, String modelo, int anoFabricacao) {
         if (marca == null || modelo == null || anoFabricacao < 1886 || anoFabricacao > 2026) {
             System.out.println("Erro: Marca(e/ou) Ano invalido");
             return;
+
         }
+        totalCarros++;
         this.marca = marca;
         this.modelo = modelo;
         this.anoFabricacao =  anoFabricacao;
@@ -30,6 +32,7 @@ public class Carro {
         this.marca = "Desconhecido";
         this.modelo = "Desconhecido";
         this.anoFabricacao = 0;
+        totalCarros++;
     }
 
     public void exibir(){
@@ -47,17 +50,20 @@ public static void main(String[] args) {
     minhaGaragem.add(new Carro("Honda", "Civic", 1886));
     minhaGaragem.add(new Carro("Ford", "Maverick", 2000));
     minhaGaragem.add(new Carro("Toyota", "Corolla", 2010));
+    minhaGaragem.add(new Carro("Chevrolet", "Cruze", 2024));
     minhaGaragem.add(new Carro());
 
         System.out.println("----- EXIBINDO TODOS OS CARROS DA LISTA -----");
+        System.out.println("O total de carros na garagem é: " + Carro.totalCarros);
 
         for(Carro carroDaVez : minhaGaragem){
             carroDaVez.exibir();
         }
     }
 }
-/* O que muda entre os dois construtores:
-           O construtor com parâmetros obriga a passar os dados na hora de instanciar, garantindo um carro completo.
-           O construtor sem parâmetros (sobrecarg) dá a flexibilidade de criar o carro "vazio" com valores neutros,
-           podendo ser preenchido futuramente através dos métodos setters.
-        */
+/*
+Acessamos com Carro.totalCarros (nome da classe) porque atributos static pertencem à classe como um todo e não a um objeto especifico.
+
+Atributo de Instância (Ex: marca, modelo): Cada objeto tem sua própria cópia. Se eu alterar a marca de um carro, o outro não muda.
+Atributo Static (Ex: totalCarros): É compartilhado por todos os objetos daquela classe. Existe apenas uma única variável na memória que todos "enxergam" e alteram juntos. É por isso que ela funciona como um contador global.
+ */
