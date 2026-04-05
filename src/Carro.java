@@ -5,6 +5,7 @@ public class Carro {
     private String modelo;
     private int anoFabricacao;
     static int totalCarros = 0;
+    static final int ANO_PRIMEIRO_CARRO = 1886;
 
     public String getMarca() {
         return marca;
@@ -17,10 +18,9 @@ public class Carro {
     }
     
     public Carro(String marca, String modelo, int anoFabricacao) {
-        if (marca == null || modelo == null || anoFabricacao < 1886 || anoFabricacao > 2026) {
+        if (marca == null || modelo == null || anoFabricacao < ANO_PRIMEIRO_CARRO || anoFabricacao > 2026){
             System.out.println("Erro: Marca(e/ou) Ano invalido");
             return;
-
         }
         totalCarros++;
         this.marca = marca;
@@ -39,10 +39,6 @@ public class Carro {
         System.out.println("Carro: " + marca + " " + modelo + " - Ano: " + anoFabricacao);
     }
 
-    /*
-    Um método static não consegue acessar um atributo de instância porque o método estático existe independentemente de qualquer objeto.
-    Como os atributos de instância (como modelo) só existem 'dentro' de um objeto específico, o método estático não sabe para qual objeto olhar.
-     */
     public static void imprimirTotal(){
         System.out.println(totalCarros);
     }
@@ -53,9 +49,11 @@ public class Carro {
 
 public static void main(String[] args) {
 
+        Carro.ANO_PRIMEIRO_CARRO = 1990;
+
     ArrayList<Carro> minhaGaragem = new ArrayList<>();
 
-    minhaGaragem.add(new Carro("Honda", "Civic", 1886));
+    minhaGaragem.add(new Carro("Honda", "Civic", 1990));
     minhaGaragem.add(new Carro("Ford", "Maverick", 2000));
     minhaGaragem.add(new Carro("Toyota", "Corolla", 2010));
     minhaGaragem.add(new Carro("Chevrolet", "Cruze", 2024));
@@ -70,8 +68,7 @@ public static void main(String[] args) {
     }
 }
 /*
-Acessamos com Carro.totalCarros (nome da classe) porque atributos static pertencem à classe como um todo e não a um objeto especifico.
-
-Atributo de Instância (Ex: marca, modelo): Cada objeto tem sua própria cópia. Se eu alterar a marca de um carro, o outro não muda.
-Atributo Static (Ex: totalCarros): É compartilhado por todos os objetos daquela classe. Existe apenas uma única variável na memória que todos "enxergam" e alteram juntos. É por isso que ela funciona como um contador global.
+O erro acontece porque a palavra 'final' torna a variável imutável (uma constante).
+           Depois de definida, o Java impede qualquer alteração no seu valor,
+           garantindo segurança e integridade aos dados do sistema.
  */
