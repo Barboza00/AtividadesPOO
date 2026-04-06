@@ -52,18 +52,21 @@ public class Carro {
         return 2026 - anoFabricacao;
     }
 
-public static void main(String[] args) {
+    public static void trocarModelo(Carro c) {
+        c.setModelo("Fusca");
+    }
 
-/*
-a) Ambos serão "Palio".
-b) Eles compartilham o mesmo endereço de memória (o mesmo objeto no Heap).
-c) No Ex 11, o valor fica na Stack (independente). No Ex 12, as variáveis na Stack são apenas referências para o objeto real que fica no Heap.
-*/
-    Carro c1 = new Carro("Fiat", "Uno", 2000);
-    Carro c2 = c1;
-    c2.setModelo("Palio");
-    System.out.println(c1.getModelo());
-    System.out.println(c2.getModelo());
+    public static void main(String[] args) {
+        Carro meuCarro = new Carro("VW", "Gol", 2015);
+        trocarModelo(meuCarro);
+        System.out.println(meuCarro.getModelo());
+    }
+    // a) Fusca
+    // b) A mudança afetou o objeto original porque objetos em Java são passados por referência.
+    // O parâmetro c aponta exatamente para o mesmo endereço de memória no Heap onde o objeto meuCarro está armazenado.
+    // Como ambos manipulam o mesmo objeto, a alteração feita dentro do método persiste fora dele.
+
+
 /*
     ArrayList<Carro> minhaGaragem = new ArrayList<>();
 
@@ -78,6 +81,6 @@ c) No Ex 11, o valor fica na Stack (independente). No Ex 12, as variáveis na St
 
         for(Carro carroDaVez : minhaGaragem){
             carroDaVez.exibir();
-        } */
-    }
+        }
+    }*/
 }
