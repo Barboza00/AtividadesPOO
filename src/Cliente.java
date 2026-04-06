@@ -40,6 +40,6 @@ public class Cliente {
     c2.imprimirDados();
     c3.imprimirDados();
 
-    System.out.println("\n Número de clientes cadastrados: " + Cliente.totalClientes);
+    System.out.println("\n Número de clientes cadastrados:  " + Cliente.totalClientes);
     }
 }
