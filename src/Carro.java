@@ -1,4 +1,3 @@
-/*
 import java.util.ArrayList;
 
 public class Carro {
@@ -11,9 +10,14 @@ public class Carro {
     public String getMarca() {
         return marca;
     }
+
     public String getModelo() {
         return modelo;
     }
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
     public int getAnoFabricacao() {
         return anoFabricacao;
     }
@@ -50,6 +54,17 @@ public class Carro {
 
 public static void main(String[] args) {
 
+/*
+a) Ambos serão "Palio".
+b) Eles compartilham o mesmo endereço de memória (o mesmo objeto no Heap).
+c) No Ex 11, o valor fica na Stack (independente). No Ex 12, as variáveis na Stack são apenas referências para o objeto real que fica no Heap.
+*/
+    Carro c1 = new Carro("Fiat", "Uno", 2000);
+    Carro c2 = c1;
+    c2.setModelo("Palio");
+    System.out.println(c1.getModelo());
+    System.out.println(c2.getModelo());
+/*
     ArrayList<Carro> minhaGaragem = new ArrayList<>();
 
     minhaGaragem.add(new Carro("Honda", "Civic", 1990));
@@ -63,22 +78,6 @@ public static void main(String[] args) {
 
         for(Carro carroDaVez : minhaGaragem){
             carroDaVez.exibir();
-        }
+        } */
     }
 }
- */
-
-public class Carro {
-    public static void main(String[] args) {
-        int a = 10;
-        int b = a;
-        b = 99;
-        System.out.println("a = " + a);
-        System.out.println("b = " + b);
-    }
-}
-/*
-Alterar b não mudou a porque int é um tipo primitivo.
-Em tipos primitivos, o Java realiza uma atribuição por valor, criando uma cópia independente na memória.
-Portanto, qualquer alteração em b não afeta o valor original de a.
- */
